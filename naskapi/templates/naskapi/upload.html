@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Toolbox File</title>
+</head>
+<body>
+    <h1>Upload Toolbox Database File</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="toolbox_file" accept=".txt,.db" required>
+        <button type="submit">Generate Applet</button>
+    </form>
+    {% if download_url %}
+        <a href="{{ download_url }}">Download Excel File</a>
+    {% endif %}
+</body>
+</html>
