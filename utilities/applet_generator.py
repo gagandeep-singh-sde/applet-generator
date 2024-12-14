@@ -6,7 +6,12 @@ syllabicConvertor = SyllabicConvertor()
 
 
 def GenerateApplet(entries):
-    output = '<h1 text-align="center">Naskapi Verbs Conjugation</h1> \r\n\t<div class="tab"><ul class="tabnav"> <!-- Verb Classes -->\r\n\tVerb Classes:'
+    database = build_database(entries)
+    output = generate_html(database)
+    return write_to_file(output)
+
+
+def build_database(entries):
     database = {}
     mxKey = "mx4"
     prns = {
@@ -146,17 +151,15 @@ def GenerateApplet(entries):
             if prn not in database[ps][pdm][stm][wn][grp][mx]:
                 database[ps][pdm][stm][wn][grp][mx][prn] = []
             database[ps][pdm][stm][wn][grp][mx][prn].append(entry)
+    return database
 
+
+def generate_html(database):
+    output = '<h1 text-align="center">Naskapi Verbs Conjugation</h1> \r\n\t<div class="tab"><ul class="tabnav"> <!-- Verb Classes -->\r\n\tVerb Classes:'
     pss = sorted(database.keys())
     for ps in pss:
-        output = (
-            "%s\r\n\t<li class=' %s' id='%s' title=''><a href='#' class='%s' name='%s' onclick='selectAllTabs(this); return false;'>%s</a></li>"
-            % (output, ps, ps, ps, ps, ps)
-        )
-    output = "%s</ul>" % output
-
-    # end of sorting
-    # begin formating
+        output += f"\r\n\t<li class=' {ps}' id='{ps}' title=''><a href='#' class='{ps}' name='{ps}' onclick='selectAllTabs(this); return false;'>{ps}</a></li>"
+    output += "</ul>"
     for ps in database.keys():
         output = (
             '%s\r\n\t<div  id="c_%s" class="hidden"><div class="tab"><ul class="tabnav">\ Conjugations:\ '
@@ -432,23 +435,14 @@ def GenerateApplet(entries):
             output = "%s</div></div>" % output
         output = "%s</div></div>" % output
     output = "%s</div></div>" % output
+    return output
 
-    # endof formating
 
-    # read template file
+def write_to_file(output):
     reader = codecs.open(filename="utilities/template.html", encoding="utf-8")
     html = reader.readlines()
     reader.close()
-    # import output into template
-
-    # write file
     writer = codecs.open(filename="applet.html", mode="w", encoding="utf-8")
-    writer.write(
-        "".join(html).replace(
-            "</body>",
-            "%s</body>" % (output),
-        )
-    )
+    writer.write("".join(html).replace("</body>", f"{output}</body>"))
     writer.close()
-
     return "applet.html"
