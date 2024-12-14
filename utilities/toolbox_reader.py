@@ -2,7 +2,7 @@
 import codecs
 
 
-def read_main_db(filepath):
+def ReadToolboxDB(filepath):
     """
     Read the main database file and parse its content.
     """
@@ -44,9 +44,3 @@ def _parse_field(field):
     else:
         key, value = field.strip().split(" ", 1)
         return key.strip(), value.strip()
-
-
-# if __name__ == "__main__":
-#     filepath = "../Wn_vrbpd.db"
-#     database = read_main_db(filepath)
-#     print(database)

@@ -2,6 +2,8 @@ import os
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
+import utilities.toolbox_reader as toolbox_reader
+import utilities.applet_generator as applet_generator
 
 
 class ToolboxFileHandler:
@@ -16,9 +18,11 @@ class ToolboxFileHandler:
         self.file_path = self.fs.path(self.file_path)
 
     def process_file(self):
-        applet_file_path = os.path.join(os.path.dirname(self.file_path), "applet.html")
-        with open(applet_file_path, "w", encoding="utf-8") as f:
-            f.write("<html><body><h1>Applet Content</h1></body></html>")
+        entries = toolbox_reader.ReadToolboxDB(self.file_path)
+        applet = applet_generator.GenerateApplet(entries)
+        applet_file_path = os.path.join(os.path.dirname(self.file_path), applet)
+        print(applet)
+        print(applet_file_path)
         return applet_file_path
 
 

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Naskapi Verbs</title>
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style type="text/css">
+      @font-face {
+        font-family: "BJCree UNI";
+        src: url("https://www.eastcree.org/downloads/bjcrus.eot");
+        src: local("BJCree UNI"),
+          url("https://www.eastcree.org/downloads/bjcrus.ttf")
+            format("truetype");
+      }
+      .syllabics {
+        font-family: "BJCree UNI", "Aboriginal Sans", Helvetica, Arial !important;
+      }
+      body {
+        font-family: "Open Sans", sans-serif, "Doulos SIL";
+        font-size: 1em;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* begin css tabs */
+
+      ul.tabnav {
+        text-align: left;
+        margin: 1em 0 1em 0;
+        font: bold 11px verdana, arial, sans-serif;
+        border-bottom: 1px solid #dda601;
+        list-style-type: none;
+        padding: 3px 10px 3px 10px;
+      }
+
+      ul.tabnav li {
+        display: inline;
+      }
+
+      ul.tabnav li.active {
+        border-bottom: 1px solid #fff;
+        background-color: #fff;
+      }
+
+      ul.tabnav li.active a {
+        background-color: #fff;
+        color: #000;
+        position: relative;
+        top: 1px;
+        padding-top: 4px;
+      }
+
+      ul.tabnav li a {
+        padding: 0.3em 0.6em;
+        border: 1px solid #dda601;
+        background-color: #eeb710;
+        color: #000;
+        margin-right: 0px;
+        text-decoration: none;
+        border-bottom: none;
+        border-radius: 0.3em 0.3em 0 0;
+        min-width: 3em;
+      }
+
+      ul.tabnav li {
+        padding: 0 0.5em;
+        margin: 0 0.05em;
+      }
+
+      ul.tabnav a:hover {
+        background: #fff;
+      }
+
+      ul.tabnav li a.in,
+      th.in {
+        border: 2px solid #258;
+        background-color: #369;
+        border-bottom: 0;
+        color: white;
+      }
+
+      ul.tabnav li a.co,
+      th.co {
+        border: 2px solid #682;
+        background-color: #693;
+        border-bottom: 0;
+        color: white;
+      }
+
+      ul.tabnav li a.im,
+      th.im {
+        border: 2px solid #852;
+        background-color: #963;
+        border-bottom: 0;
+        color: white;
+      }
+
+      ul.tabnav > li.active > a {
+        background: white !important;
+        color: #333;
+      }
+
+      /* end css tabs */
+      th.in {
+        border: 2px solid #369;
+      }
+
+      th.co {
+        border: 2px solid #693;
+      }
+
+      th.im {
+        border: 2px solid #963;
+      }
+
+      div > table > tr > td {
+        padding: 0.2em 1em;
+        min-height: 200px;
+      }
+
+      #moreInfo:hover {
+        width: auto;
+      }
+
+      div.tab div.hidden {
+        display: none;
+      }
+
+      table.info,
+      table.passive {
+        float: left; /**/
+        background: #ffffdd;
+        border: 1px solid #dda601;
+        border-collapse: collapse;
+        /*border-radius: 1em;*/
+        box-shadow: -1px -1px 1em rgba(0, 0, 0, 0.2) inset;
+        margin: 3em;
+      }
+      table.info.vta {
+        border-width: 0;
+      }
+      table.passive {
+        margin-top: -1em;
+      }
+
+      table.passive td {
+        min-height: 200px;
+      }
+
+      table.info td,
+      table.info > tbody > tr > td > table.passive > tbody > tr > td {
+        border-bottom: 1px solid #dda601;
+        padding: 0.2em 0.8em;
+      }
+
+      table.info td.spacer {
+        width: 2em;
+        border-bottom: 1px solid white;
+        border-right: 1px solid #dda601;
+        border-left: 1px solid #dda601;
+        border-top: 3px solid white !important;
+        margin-right: 2em;
+        background-color: white;
+      }
+
+      table.info td.spacer1 {
+        width: 2em;
+        border-right: 1px solid #dda601;
+
+        margin-right: 2em;
+      }
+
+      table.info tr.alt,
+      table.info th.alt {
+        border: none;
+        border-bottom: 1px solid #dda601;
+        background: white;
+        text-align: left;
+        color: #333;
+        padding-right: 5px;
+      }
+
+      table.info > tbody > tr > td table,
+      table.info > tbody > tr > td table tr,
+      table.info > tbody > tr > td table tr td {
+        padding: 1px 0;
+        margin: 0;
+        border-spacing: 0;
+        border-collapse: collapse;
+        min-width: 20px;
+      }
+
+      table.info > tbody > tr > td table tr:last-of-type td {
+        border-bottom: none;
+      }
+
+      table.info > tbody > tr > td table tr th {
+        min-width: 25px;
+      }
+
+      th.ve {
+        border: 3px solid #dda601;
+        padding: 0.5em;
+      }
+
+      #moreInfo table tr td {
+        padding: 0.2em 0.5em;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .italic-ka {
+        font-style: italic;
+        font-weight: normal !important;
+      }
+
+      .speaker {
+        height: 13px;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 5px;
+      }
+
+      .speaker :hover {
+        background: #69c;
+        border: 2px solid #dda601;
+      }
+
+      .closeButton {
+        float: right;
+        margin-top: -0.7em;
+        margin-right: -1.2em;
+        color: #ccc;
+        font-size: 0.8em;
+        border-radius: 1.2em;
+        height: 1.2em;
+        width: 1.2em;
+        padding: 0.2em;
+        border: 1px solid #ddd;
+        background: #b30000;
+        text-align: center;
+        font-weight: bold;
+        font-variant: small-caps;
+        content: "x";
+        box-shadow: 0 0 0.5em #ffbf00 inset;
+        cursor: pointer;
+      }
+
+      .closeButton:hover {
+        background: #ff0000;
+        color: #fff;
+        box-shadow: 0 0 0.8em #fd7;
+      }
+      .btn-group .btn {
+        background-color: #dda601;
+        border: 1px solid #a70;
+        color: white;
+        padding: 10px 24px;
+        cursor: pointer;
+        float: left;
+      }
+      .btn-group .btn:not(:last-child) {
+        border-right: none;
+      }
+
+      .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .btn-group .btn:hover {
+        background-color: #eb1;
+      }
+      .modal {
+        z-index: 10000;
+        position: fixed;
+        right: 1vw;
+        margin: auto;
+        min-width: 20vw;
+        max-width: 80vw;
+        min-height: 20vh;
+        max-height: 80vh;
+        display: none;
+        border: 1px solid #dda601;
+        box-shadow: 1px 1px 1px #a70;
+        padding: 0;
+        background: white;
+      }
+      .modal > .content {
+        background: white;
+        padding: 1rem;
+        position: relative;
+        height: calc(100% - 2rem);
+        max-height: calc(80vh-3rem);
+        overflow: auto;
+      }
+      .modal > .header {
+        background: #dda601;
+        color: white;
+        padding: 1rem;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      table.multi tr > td {
+        border-bottom: 1px solid #dda601 !important;
+      }
+      table.multi tr:last-of-type > td {
+        border-bottom: none !important;
+      }
+    </style>
+    <script type="text/javascript">
+      function openDialog(elemID) {
+        document.getElementById(elemID).style.display = "block";
+      }
+      function closeDialog(elemID) {
+        document.getElementById(elemID).style.display = "none";
+      }
+
+      function selectTab(tab) {
+        var ul = tab.parentNode;
+        for (var i = 0; i < ul.childNodes.length; i++) {
+          if (ul.childNodes[i]["id"]) {
+            ul.childNodes[i].className = "";
+            try {
+              if (ul.childNodes[i].id)
+                document.getElementById("c_" + ul.childNodes[i].id).className =
+                  "hidden";
+            } catch (e) {
+              console.log(
+                "error selectTab child",
+                document.getElementById("c_" + ul.childNodes[i].id),
+                "c_" + ul.childNodes[i].id
+              );
+            }
+          }
+        }
+        tab.className = "active";
+        try {
+          document.getElementById("c_" + tab.id).className = "active";
+        } catch (err) {
+          console.log(
+            "error selectTab set active",
+            document.getElementById("c_" + tab.id),
+            "c_" + tab.id
+          );
+        }
+
+        console.log("selectTab ", document.getElementById("c_" + tab.id));
+        if (
+          document
+            .getElementById("c_" + tab.id)
+            .getElementsByClassName("tabnav").length &&
+          document
+            .getElementById("c_" + tab.id)
+            .getElementsByClassName("active").length < 1
+        ) {
+          selectTab(
+            document.getElementById("c_" + tab.id).getElementsByTagName("li")[0]
+          );
+        }
+      }
+
+      function selectAllTabs(tab) {
+        selectTab(tab.parentNode);
+      }
+
+      function selectAll(name) {
+        var all = document.getElementsByName(name);
+
+        for (var i = 0; i < all.length; i++) {
+          selectTab(all[i].parentNode);
+        }
+      }
+
+      function selectPS() {
+        if (document.URL.indexOf("?") > 0) {
+          var query = document.URL.split("\?");
+          var pss = query[1].split("&");
+          var i = 0;
+          for (i = 0; i < pss.length; i++) {
+            if (pss[i].match("=") == null)
+              selectAll(decodeURIComponent(pss[i]));
+            else {
+              var val = pss[i].split("=");
+              selectAll(decodeURIComponent(val[1]));
+            }
+          }
+        } else {
+          selectAll("vai");
+        }
+      }
+
+      function toggleDisplay(id) {
+        var elm = document.getElementById(id);
+
+        if (elm.style.display.match("none") != null) {
+          document.getElementById(id).style.display = "block";
+        } else {
+          document.getElementById(id).style.display = "none";
+        }
+      }
+
+      function playSound(url) {
+        document.getElementById("soundbox").innerHTML =
+          '<audio controls="true" autoplay="true"   id="soundPlayer" canplay="this.play()">  <source id="soundSource" src="' +
+          url +
+          '" type="audio/mpeg" />  Your browser does not support the audio element. </audio>';
+      }
+      window.onload = function () {
+        selectPS();
+      };
+    </script>
+  </head>
+  <body onload="selectPS();"></body>
+</html>
