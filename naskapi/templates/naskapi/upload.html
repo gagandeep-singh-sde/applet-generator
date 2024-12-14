@@ -45,17 +45,29 @@
         .btn:hover {
             background-color: rgb(54, 136, 85);
         }
+        .loading {
+            display: none;
+            font-size: 1.2em;
+            color: rgb(75, 185, 117);
+            margin-top: 20px;
+        }
     </style>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Upload Toolbox Database File</h1>
         <div class="content">
-            <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file" name="toolbox_file" accept=".txt,.db" required>
-            <button class="btn" type="submit">Generate Applet</button>
-        </form>
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+                {% csrf_token %}
+                <input type="file" name="toolbox_file" accept=".txt,.db" required>
+                <button class="btn" type="submit">Generate Applet</button>
+            </form>
+            <div id="loading" class="loading">Processing, please wait...</div>
             {% if download_url %}
                 <a href="{{ download_url }}">Download Applet</a>
             {% endif %}
